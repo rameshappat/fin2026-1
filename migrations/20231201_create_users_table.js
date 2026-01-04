@@ -1,0 +1,1 @@
+exports.up = function(knex) {\n  return knex.schema.createTable('users', table => {\n    table.uuid('userId').primary();\n    table.string('email').unique().notNullable();\n    table.string('passwordHash').notNullable();\n    table.string('mfaType');\n  });\n};\n\nexports.down = function(knex) {\n  return knex.schema.dropTable('users');\n};
